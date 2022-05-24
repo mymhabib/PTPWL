@@ -79,19 +79,21 @@
         <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
             <?php foreach ($data['proyek'] as $pry) : ?>
                 <div class="col-9 col-sm-4">
-                    <div class="card ml-3 mb-3" style="height: 12rem;">
-                        <div class="card-body ">
-                            <li class="list-group-item  ml-auto p-1 d-flex justify-content-between align-items-center" style="border: none;">
-                                <?= $pry['nama_proyek']; ?>
-                            </li>
-                            <li class="list-group-item  ml-auto p-1 d-flex justify-content-between text-muted align-items-center" style="border: none;">
-                                <?= $pry['pt']; ?>
-                            </li>
-                            <li class="list-group-item  ml-auto p-1 d-flex justify-content-between align-items-center" style="border: none;">
-                                <a href="<?= BASEURL; ?>proyek/detail/<?= $pry['id']; ?>" class="badge bg-success " style="text-decoration:none;"> Detail</a>
-                            </li>
+                    <a href="<?= BASEURL; ?>proyek/detail/<?= $pry['id']; ?>" style="text-decoration:none;">
+                        <div class="card ml-3 mb-3" style="height: 12rem;">
+                            <div class="card-body ">
+                                <li class="list-group-item  ml-auto p-1 d-flex justify-content-between align-items-center" style="border: none;">
+                                    <?= $pry['nama_proyek']; ?>
+                                </li>
+                                <li class="list-group-item  ml-auto p-1 d-flex justify-content-between text-muted align-items-center" style="border: none;">
+                                    <?= $pry['pt']; ?>
+                                </li>
+                                <li class="list-group-item  ml-auto p-1 d-flex justify-content-between align-items-center" style="border: none;">
+
+                                </li>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
             <?php endforeach; ?>
         </div>

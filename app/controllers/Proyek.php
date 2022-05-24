@@ -51,12 +51,12 @@
         public function ubah(){
             if($this->model('Proyek_model')->ubahDataProyek($_POST)>0){
                 Flasher::setFlash('berhasil', ' diubah','success');
-                header('Location:'.BASEURL.'proyek');
+                header('Location:'.BASEURL.'proyek/detail/'.$_POST['id']);
                 exit;
             }
             else{
                 Flasher::setFlash('gagal',' diubah','danger');
-                header('Location:'.BASEURL.'proyek');
+                header('Location:'.BASEURL.'proyek/detail/'.$_POST['id']);
                 exit;
             }
         }
