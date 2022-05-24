@@ -29,7 +29,7 @@
     </div>
     <div class="col-10">
         <h2>Daftar Proyek</h2>
-        <div class="modal fade" id="modalProyek" tabindex="-1" aria-labelledby="judulModal" aria-hidden="true">
+        <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" id="modalProyek" tabindex="-1" aria-labelledby="judulModal" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
