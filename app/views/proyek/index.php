@@ -1,4 +1,22 @@
-<div class="container mt-3">
+<style>
+/*-----------------
+    card animation
+---------------------*/
+    .card {
+        border-radius: 4px;
+        background: #fff;
+        box-shadow: 0 6px 10px rgba(0, 0, 0, .08), 0 0 6px rgba(0, 0, 0, .05);
+        transition: .3s transform cubic-bezier(.155, 1.105, .295, 1.12), .3s box-shadow, .3s -webkit-transform cubic-bezier(.155, 1.105, .295, 1.12);
+        cursor: pointer;
+    }
+
+    .card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06);
+    }
+</style>
+
+<div class="container">
 
     <div class="row">
         <div class="col-lg-6">
@@ -27,7 +45,7 @@
             </form>
         </div>
     </div>
-    <div class="col-10">
+    <div class="col-20">
         <h2>Daftar Proyek</h2>
         <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" id="modalProyek" tabindex="-1" aria-labelledby="judulModal" aria-hidden="true">
             <div class="modal-dialog">
@@ -76,26 +94,71 @@
                 </div>
             </div>
         </div>
-        <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
-            <?php foreach ($data['proyek'] as $pry) : ?>
-                <div class="col-9 col-sm-4">
-                    <a href="<?= BASEURL; ?>proyek/detail/<?= $pry['id']; ?>" style="text-decoration:none;">
-                        <div class="card ml-3 mb-3" style="height: 12rem;">
-                            <div class="card-body ">
-                                <li class="list-group-item  ml-auto p-1 d-flex justify-content-between align-items-center" style="border: none;">
-                                    <?= $pry['nama_proyek']; ?>
-                                </li>
-                                <li class="list-group-item  ml-auto p-1 d-flex justify-content-between text-muted align-items-center" style="border: none;">
-                                    <?= $pry['pt']; ?>
-                                </li>
-                                <li class="list-group-item  ml-auto p-1 d-flex justify-content-between align-items-center" style="border: none;">
+        <div class="row row-cols-lg-3">
 
-                                </li>
-                            </div>
+            <!-------------------------------------------------------------------------------------------
+             menghitung selisih waktu sekarang dan waktu terakhir update data (output: x waktu yang lalu)
+            --------------------------------------------------------------------------------------------->
+
+            <?php foreach ($data['proyek'] as $pry) : ?>
+                <?php
+                $tanggalUpdate = $pry['tanggal_update'];
+                date_default_timezone_set('Asia/Jakarta');
+                $datenow = date('Y-m-d H:i:s');
+                $currentDateTime = new DateTime($datenow);
+                $passedDateTime = new DateTime($tanggalUpdate);
+                $interval = $currentDateTime->diff($passedDateTime);
+                //$elapsed = $interval->format('%y years %m months %a days %h hours %i minutes %s seconds');
+                $day = $interval->format('%a');
+                $hour = $interval->format('%h');
+                $min = $interval->format('%i');
+                $seconds = $interval->format('%s');
+                $output = '';
+                $outputDay = '';
+                $outputHour = '';
+                $outputMin = '';
+                $outputSeconds = '';
+
+                if ($day > 7) {
+                    $dateArray = date_parse_from_format('Y/m/d', $tanggalUpdate);
+                    $monthName = DateTime::createFromFormat('!m', $dateArray['month'])->format('F');
+                    $output =  $dateArray['day'] . " " . $monthName  . " " . $dateArray['year'];
+                } else if ($day >= 1 && $day <= 7) {
+                    if ($day == 1) $outputDay =  $day . " hari yang lalu";
+                    $outputDay =  $day . " hari yang lalu";
+                } else if ($hour >= 1 && $hour <= 24) {
+                    if ($hour == 1) $outputHour =  $hour . " jam yang lalu";
+                    $outputHour =  $hour . " jam yang lalu";
+                } else if ($min >= 1 && $min <= 60) {
+                    if ($min == 1) $outputMin =  $min . " menit yang lalu";
+                    $outputMin =  $min . " menit yang lalu";
+                } else if ($seconds >= 1 && $seconds <= 60) {
+                    if ($seconds == 1) $outputSeconds =  $seconds . " detik yang lalu";
+                    $outputSeconds =  $seconds . " detik yang lalu";
+                }
+                ?>
+
+
+                <a href="<?= BASEURL; ?>proyek/detail/<?= $pry['id']; ?>" style="text-decoration:none;">
+                    <div class="card text-center ml-4 mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title"><?= $pry['nama_proyek']; ?></h5>
+                            <p class="text-muted card-subtitle"><?= $pry['pt']; ?></p>
                         </div>
-                    </a>
-                </div>
+                        <div class="card-footer">
+                            <small class="text-muted">diupdate <?php echo $output . $outputDay . $outputHour . $outputMin . $outputSeconds ?></small>
+                        </div>
+                    </div>
+                </a>
+                </form>
             <?php endforeach; ?>
         </div>
     </div>
 </div>
+
+<!-- disable resubmission confirmation -->
+<script>
+    if (window.history.replaceState) {
+        window.history.replaceState(null, null, window.location.href);
+    }
+</script>

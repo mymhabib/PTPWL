@@ -14,6 +14,7 @@ class Proyek_model
     {
         $this->db->query('SELECT * FROM ' . $this->table);
         return $this->db->resultSet();
+        
     }
     public function getProyekById($id)
     {
@@ -24,7 +25,7 @@ class Proyek_model
     public function tambahDataProyek($data)
     {
         date_default_timezone_set('Asia/Jakarta');
-        $date = date('Y/m/d');
+        $date = date('Y-m-d H:i:s');
         $query = "INSERT INTO proyek VALUES(NULL,:pt,:nama_proyek,:lokasi,:maps,:link,:panjang,:lebar,:tanggal_input,:tanggal_update)";
         $this->db->query($query);
         $this->db->bind('pt', $data['pt']);
@@ -53,7 +54,7 @@ class Proyek_model
     public function ubahDataProyek($data)
     {
         date_default_timezone_set('Asia/Jakarta');
-        $date = date('Y-m-d');
+        $date = date('Y-m-d H:i:s');
         $query = "UPDATE proyek set
         pt=:pt,
         nama_proyek=:nama_proyek,
@@ -86,4 +87,6 @@ class Proyek_model
         $this->db->bind('keyword', "%$keyword%");
         return $this->db->resultSet();
     }
+
+    
 }
