@@ -7,7 +7,6 @@
         background: #fff;
         box-shadow: 0 6px 10px rgba(0, 0, 0, .08), 0 0 6px rgba(0, 0, 0, .05);
         transition: .3s transform cubic-bezier(.155, 1.105, .295, 1.12), .3s box-shadow, .3s -webkit-transform cubic-bezier(.155, 1.105, .295, 1.12);
-        cursor: pointer;
     }
 </style>
 
@@ -16,7 +15,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalLabelProyek">Tambah Data Proyek</h5>
+                <h5 class="modal-title" id="modalLabelProyek">Ubah Data Proyek</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -53,7 +52,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary " data-target="#modalProyek">Tambah Data</button>
+                <button type="submit" class="btn btn-primary " data-target="#modalProyek">Ubah Data</button>
                 </form>
             </div>
         </div>
