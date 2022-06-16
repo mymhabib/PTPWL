@@ -153,7 +153,7 @@
         <br>
         <br>
         <br>
-        <p style="text-align: center;" class="text-muted"><?= $data['kosong']; ?></p>
+        <p class="text-muted text-center align-middle"><?= $data['kosong']; ?></p>
     </div>
 </div>
 

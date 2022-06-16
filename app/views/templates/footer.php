@@ -12,6 +12,27 @@
                         $('#sidebar').toggleClass('active');
                         $(this).toggleClass('active');
                     });
+                    // Save collapsible state
+                    const collapseExample = $("#proyekSubmenu");
+
+                    collapseExample.on("shown.bs.collapse", function() {
+                        localStorage.setItem("collapseExample", "show");
+                        collapseExample.removeClass("not-collapsing");
+                    });
+
+                    collapseExample.on("hidden.bs.collapse", function() {
+                        localStorage.setItem("collapseExample", "hide");
+                        collapseExample.removeClass("not-collapsing");
+                    });
+
+                    const showExampleCollapse = localStorage.getItem("collapseExample");
+
+                    if (showExampleCollapse === "show") {
+                        collapseExample.toggleClass("not-collapsing");
+                        collapseExample.collapse("show");
+                    } else {
+                        collapseExample.collapse("hide");
+                    }
                 });
             </script>
             </body>
