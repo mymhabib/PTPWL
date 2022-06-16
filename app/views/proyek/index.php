@@ -1,5 +1,5 @@
 <style>
-/*-----------------
+    /*-----------------
     card animation
 ---------------------*/
     .card {
@@ -122,20 +122,17 @@
                 if ($day > 7) {
                     $dateArray = date_parse_from_format('Y/m/d', $tanggalUpdate);
                     $monthName = DateTime::createFromFormat('!m', $dateArray['month'])->format('F');
-                    $output =  $dateArray['day'] . " " . $monthName  . " " . $dateArray['year'];
+                    $output = "diupdate ". $dateArray['day'] . " " . $monthName  . " " . $dateArray['year'];
                 } else if ($day >= 1 && $day <= 7) {
-                    if ($day == 1) $outputDay =  $day . " hari yang lalu";
-                    $outputDay =  $day . " hari yang lalu";
+                    $outputDay = "diupdate ". $day . " hari yang lalu";
                 } else if ($hour >= 1 && $hour <= 24) {
-                    if ($hour == 1) $outputHour =  $hour . " jam yang lalu";
-                    $outputHour =  $hour . " jam yang lalu";
+                    $outputHour = "diupdate ". $hour . " jam yang lalu";
                 } else if ($min >= 1 && $min <= 60) {
-                    if ($min == 1) $outputMin =  $min . " menit yang lalu";
-                    $outputMin =  $min . " menit yang lalu";
+                    $outputMin = "diupdate ". $min . " menit yang lalu";
                 } else if ($seconds >= 1 && $seconds <= 60) {
-                    if ($seconds == 1) $outputSeconds =  $seconds . " detik yang lalu";
-                    $outputSeconds =  $seconds . " detik yang lalu";
+                    $outputSeconds = "diupdate ". $seconds . " detik yang lalu";
                 }
+
                 ?>
 
 
@@ -146,7 +143,7 @@
                             <p class="text-muted card-subtitle"><?= $pry['pt']; ?></p>
                         </div>
                         <div class="card-footer">
-                            <small class="text-muted">diupdate <?php echo $output . $outputDay . $outputHour . $outputMin . $outputSeconds ?></small>
+                            <small class="text-muted"><?php echo $output . $outputDay . $outputHour . $outputMin . $outputSeconds ?></small>
                         </div>
                     </div>
                 </a>

@@ -26,10 +26,11 @@ class Proyek_model
     {
         date_default_timezone_set('Asia/Jakarta');
         $date = date('Y-m-d H:i:s');
-        $query = "INSERT INTO proyek VALUES(NULL,:pt,:nama_proyek,:lokasi,:maps,:link,:panjang,:lebar,:tanggal_input,:tanggal_update)";
+        $query = "INSERT INTO proyek VALUES(NULL,:pt,:nama_proyek,:tahun_proyek,:lokasi,:maps,:link,:panjang,:lebar,:tanggal_input,:tanggal_update)";
         $this->db->query($query);
         $this->db->bind('pt', $data['pt']);
         $this->db->bind('nama_proyek', $data['nama_proyek']);
+        $this->db->bind('tahun_proyek', $data['tahun_proyek']);
         $this->db->bind('lokasi', $data['lokasi']);
         $this->db->bind('maps', $data['maps']);
         $this->db->bind('link', $data['link']);
@@ -58,6 +59,7 @@ class Proyek_model
         $query = "UPDATE proyek set
         pt=:pt,
         nama_proyek=:nama_proyek,
+        tahun_proyek=:tahun_proyek,
         lokasi=:lokasi,
         maps=:maps,
         link=:link,
@@ -68,6 +70,7 @@ class Proyek_model
         $this->db->query($query);
         $this->db->bind('pt', $data['pt']);
         $this->db->bind('nama_proyek', $data['nama_proyek']);
+        $this->db->bind('tahun_proyek', $data['tahun_proyek']);
         $this->db->bind('lokasi', $data['lokasi']);
         $this->db->bind('maps', $data['maps']);
         $this->db->bind('link', $data['link']);

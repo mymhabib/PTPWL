@@ -1,10 +1,11 @@
-console.log('zzxsx');
+console.log('asklfjasklfjhaslkfj');
 $(function() {
     $('.tombolTambahData').on('click', function() {
         $('#modalLabelProyek').html('Tambah Data Proyek');
         $('.modal-footer button[type=submit]').html('Tambah Data');
         $('#pt').val("");
         $('#nama_proyek').val("");
+        $('#tahun_proyek').val("");
         $('#lokasi').val("");
         $('#maps').val("");
         $('#link').val("");
@@ -28,6 +29,7 @@ $(function() {
             success: function(data) {
                 $('#pt').val(data.pt);
                 $('#nama_proyek').val(data.nama_proyek);
+                $('#tahun_proyek').val(data.tahun_proyek);
                 $('#lokasi').val(data.lokasi);
                 $('#maps').val(data.maps);
                 $('#link').val(data.link);

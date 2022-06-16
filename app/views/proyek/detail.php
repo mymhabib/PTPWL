@@ -30,6 +30,10 @@
                         <input type="text" class="form-control" id="nama_proyek" name="nama_proyek">
                     </div>
                     <div class="form-group">
+                        <label for="nama_proyek">Tahun Proyek</label>
+                        <input type="text" class="form-control" id="tahun_proyek" name="tahun_proyek">
+                    </div>
+                    <div class="form-group">
                         <label for="Lokasi">Lokasi</label>
                         <input type="text" class="form-control" id="lokasi" name="lokasi">
                     </div>
@@ -76,14 +80,27 @@
                 <td style="text-align: left;">
                     <div class="card" style="width: 30rem;">
                         <div class="card-body">
+                            <table>
+                                <tr>
+                                    <td style="width:70%; border-right: 1px solid #dfe2e6">
+                                        <h5 class="card-title" style="vertical-align:bottom;"><?= $data['proyek']['nama_proyek']; ?></h5>
+                                    </td>
+                                    <td rowspan="2" style="width:39%;">
+                                        <h2 style="text-align:center"><?= $data['proyek']['tahun_proyek']; ?></h2>
+                                    </td>
+                                </tr>
+                                <td style="border-right: 1px solid #dfe2e6">
+                                    <h6 class="card-subtitle mb-4 mt-3 text-muted"><?= $data['proyek']['pt']; ?></h6>
+                                </td>
+                                <td>
+                                </td>
+                            </table>
 
-                            <h5 class="card-title"><?= $data['proyek']['nama_proyek']; ?></h5>
-                            <h6 class="card-subtitle mb-2 mt-2 text-muted"><?= $data['proyek']['pt']; ?></h6>
                             <table class="table">
                                 <tbody>
                                     <tr>
-                                        <th scope="row">Lokasi:</th>
-                                        <td><?= $data['proyek']['lokasi']; ?></p>
+                                        <th style="border-top: 1px solid #dfe2e6" scope="row">Lokasi:</th>
+                                        <td style="border-top: 1px solid #dfe2e6"><?= $data['proyek']['lokasi']; ?></p>
                                         </td>
                                     </tr>
                                     <tr>
