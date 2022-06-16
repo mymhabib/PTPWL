@@ -7,7 +7,12 @@ class Proyek extends Controller
 
         if (isset($_SESSION['ptpwl_user_id'])) {
             $data['judul'] = 'Daftar Proyek';
+            $data['tahun'] = '';
+            $data['kosong'] = '';
             $data['proyek'] = $this->model('Proyek_model')->getAllProyek();
+            if (count($this->model('Proyek_model')->getAllProyek()) <= 0){
+                $data['kosong'] = 'Tidak ada data';
+            }
             $this->view('templates/header', $data);
             $this->view('proyek/index', $data);
             $this->view('templates/footer');
@@ -84,7 +89,30 @@ class Proyek extends Controller
     {
         if (isset($_SESSION['ptpwl_user_id'])) {
             $data['judul'] = 'Daftar Proyek';
+            $data['tahun'] = '';
+            $data['kosong'] = '';
             $data['proyek'] = $this->model('Proyek_model')->cariDataProyek();
+            if (count($this->model('Proyek_model')->cariDataProyek()) <= 0){
+                $data['kosong'] = 'Tidak ada data';
+            }
+            $this->view('templates/header', $data);
+            $this->view('proyek/index', $data);
+            $this->view('templates/footer');
+        } else {
+            header('location:' . BASEURL . 'login');
+        }
+    }
+
+    public function Tahun($tahun)
+    {
+        if (isset($_SESSION['ptpwl_user_id'])) {
+            $data['judul'] = 'Daftar Proyek';
+            $data['tahun'] = 'Tahun '.$tahun;
+            $data['kosong'] = '';
+            $data['proyek'] = $this->model('Proyek_model')->cariDataProyekTahun($tahun);
+            if (count($this->model('Proyek_model')->cariDataProyekTahun($tahun)) <= 0){
+                $data['kosong'] = 'Tidak ada data';
+            }
             $this->view('templates/header', $data);
             $this->view('proyek/index', $data);
             $this->view('templates/footer');

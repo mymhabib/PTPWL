@@ -91,5 +91,13 @@ class Proyek_model
         return $this->db->resultSet();
     }
 
+    public function cariDataProyekTahun($tahun)
+    {
+        $this->db->query('SELECT * FROM ' . $this->table . ' WHERE tahun_proyek LIKE :tahun');
+        $this->db->bind('tahun', $tahun);
+        return $this->db->resultSet();
+    }
+
+
     
 }

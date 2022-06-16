@@ -10,7 +10,7 @@
 
 	<!-- Bootstrap CSS CDN -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <!-- Our Custom CSS -->
+	<!-- Our Custom CSS -->
 	<link rel="stylesheet" href="<?= BASEURL; ?>/css/custom.css">
 
 	<!-- Font Awesome JS -->
@@ -42,21 +42,17 @@
 					</ul>
 				</li>
 				<li>
-					<a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Menu 2</a>
+					<a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Daftar Proyek</a>
 					<ul class="collapse list-unstyled" id="pageSubmenu">
 						<li>
-							<a href="#">Halaman 1</a>
+							<a href="<?= BASEURL; ?>proyek">Semua Proyek</a>
 						</li>
-						<li>
-							<a href="#">Halaman 2</a>
-						</li>
-						<li>
-							<a href="#">Halaman 3</a>
-						</li>
+						<?php for ($tahun = 2015; $tahun <= 2030; $tahun++) { ?>
+							<li>
+								<a href="<?= BASEURL; ?>proyek/Tahun/<?= $tahun ?>"><?php echo $tahun; ?></a>
+							</li>
+						<?php } ?>
 					</ul>
-				</li>
-				<li>
-					<a href="<?=BASEURL;?>proyek">Daftar Proyek</a>
 				</li>
 			</ul>
 		</nav>
@@ -76,5 +72,3 @@
 				</div>
 			</nav>
 			<div class="container-content">
-				
-			

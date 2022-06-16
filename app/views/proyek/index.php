@@ -46,7 +46,7 @@
         </div>
     </div>
     <div class="col-20">
-        <h2>Daftar Proyek</h2>
+        <h2>Daftar Proyek <?= $data['tahun']; ?></h2>
         <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" id="modalProyek" tabindex="-1" aria-labelledby="judulModal" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -122,15 +122,15 @@
                 if ($day > 7) {
                     $dateArray = date_parse_from_format('Y/m/d', $tanggalUpdate);
                     $monthName = DateTime::createFromFormat('!m', $dateArray['month'])->format('F');
-                    $output = "diupdate ". $dateArray['day'] . " " . $monthName  . " " . $dateArray['year'];
+                    $output = "diupdate " . $dateArray['day'] . " " . $monthName  . " " . $dateArray['year'];
                 } else if ($day >= 1 && $day <= 7) {
-                    $outputDay = "diupdate ". $day . " hari yang lalu";
+                    $outputDay = "diupdate " . $day . " hari yang lalu";
                 } else if ($hour >= 1 && $hour <= 24) {
-                    $outputHour = "diupdate ". $hour . " jam yang lalu";
+                    $outputHour = "diupdate " . $hour . " jam yang lalu";
                 } else if ($min >= 1 && $min <= 60) {
-                    $outputMin = "diupdate ". $min . " menit yang lalu";
+                    $outputMin = "diupdate " . $min . " menit yang lalu";
                 } else if ($seconds >= 1 && $seconds <= 60) {
-                    $outputSeconds = "diupdate ". $seconds . " detik yang lalu";
+                    $outputSeconds = "diupdate " . $seconds . " detik yang lalu";
                 }
 
                 ?>
@@ -150,6 +150,10 @@
                 </form>
             <?php endforeach; ?>
         </div>
+        <br>
+        <br>
+        <br>
+        <p style="text-align: center;" class="text-muted"><?= $data['kosong']; ?></p>
     </div>
 </div>
 
