@@ -47,10 +47,16 @@
 					<a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Menu 1</a>
 					<ul class="collapse list-unstyled" id="homeSubmenu">
 						<li>
-							<a href="#">Menu i</a>
+							<a href="#">Menu 1</a>
 						</li>
 						<li>
-							<a href="#">Menu ii</a>
+							<a href="#">Menu 2</a>
+						</li>
+						<li>
+							<a href="#">Menu 3</a>
+						</li>
+						<li>
+							<a href="#">Menu 4</a>
 						</li>
 					</ul>
 				</li>
