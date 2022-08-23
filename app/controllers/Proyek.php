@@ -10,7 +10,7 @@ class Proyek extends Controller
             $data['tahun'] = '';
             $data['kosong'] = '';
             $data['proyek'] = $this->model('Proyek_model')->getAllProyek();
-            if (count($this->model('Proyek_model')->getAllProyek()) <= 0){
+            if (count($this->model('Proyek_model')->getAllProyek()) <= 0) {
                 $data['kosong'] = 'Tidak ada data';
             }
             $this->view('templates/header', $data);
@@ -34,15 +34,22 @@ class Proyek extends Controller
     }
     public function tambah()
     {
+
         if (isset($_SESSION['ptpwl_user_id'])) {
-            if ($this->model('Proyek_model')->tambahDataProyek($_POST) > 0) {
-                Flasher::setFlash('berhasil', ' ditambahkan', 'success');
+            if (empty($_POST['pt']) || empty($_POST['nama_proyek']) || empty($_POST['tahun_proyek']) || empty($_POST['lokasi']) || empty($_POST['maps']) || empty($_POST['link'])) {
+                Flasher::setFlash('gagal', ' ditambahkan', 'danger');
                 header('Location:' . BASEURL . 'proyek');
                 exit;
             } else {
-                Flasher::setFlash('gagal', 'ditambahkan', 'danger');
-                header('Location:' . BASEURL . 'proyek');
-                exit;
+                if ($this->model('Proyek_model')->tambahDataProyek($_POST) > 0) {
+                    Flasher::setFlash('berhasil', ' ditambahkan', 'success');
+                    header('Location:' . BASEURL . 'proyek');
+                    exit;
+                } else {
+                    Flasher::setFlash('gagal', ' ditambahkan', 'danger');
+                    header('Location:' . BASEURL . 'proyek');
+                    exit;
+                }
             }
         } else {
             header('location:' . BASEURL . 'login');
@@ -72,19 +79,27 @@ class Proyek extends Controller
     public function ubah()
     {
         if (isset($_SESSION['ptpwl_user_id'])) {
-            if ($this->model('Proyek_model')->ubahDataProyek($_POST) > 0) {
-                Flasher::setFlash('berhasil', ' diubah', 'success');
-                header('Location:' . BASEURL . 'proyek/detail/' . $_POST['id']);
-                exit;
-            } else {
+            if (empty($_POST['pt']) || empty($_POST['nama_proyek']) || empty($_POST['tahun_proyek']) || empty($_POST['lokasi']) || empty($_POST['maps']) || empty($_POST['link'])) {
                 Flasher::setFlash('gagal', ' diubah', 'danger');
                 header('Location:' . BASEURL . 'proyek/detail/' . $_POST['id']);
                 exit;
+            } else {
+                if ($this->model('Proyek_model')->ubahDataProyek($_POST) > 0) {
+                    Flasher::setFlash('berhasil', ' diubah', 'success');
+                    header('Location:' . BASEURL . 'proyek/detail/' . $_POST['id']);
+                    exit;
+                } else {
+                    Flasher::setFlash('gagal', ' diubah', 'danger');
+                    header('Location:' . BASEURL . 'proyek/detail/' . $_POST['id']);
+                    exit;
+                }
             }
         } else {
             header('location:' . BASEURL . 'login');
         }
     }
+
+    
     public function cari()
     {
         if (isset($_SESSION['ptpwl_user_id'])) {
@@ -92,7 +107,7 @@ class Proyek extends Controller
             $data['tahun'] = '';
             $data['kosong'] = '';
             $data['proyek'] = $this->model('Proyek_model')->cariDataProyek();
-            if (count($this->model('Proyek_model')->cariDataProyek()) <= 0){
+            if (count($this->model('Proyek_model')->cariDataProyek()) <= 0) {
                 $data['kosong'] = 'Tidak ada data';
             }
             $this->view('templates/header', $data);
@@ -107,10 +122,10 @@ class Proyek extends Controller
     {
         if (isset($_SESSION['ptpwl_user_id'])) {
             $data['judul'] = 'Daftar Proyek';
-            $data['tahun'] = 'Tahun '.$tahun;
+            $data['tahun'] = 'Tahun ' . $tahun;
             $data['kosong'] = '';
             $data['proyek'] = $this->model('Proyek_model')->cariDataProyekTahun($tahun);
-            if (count($this->model('Proyek_model')->cariDataProyekTahun($tahun)) <= 0){
+            if (count($this->model('Proyek_model')->cariDataProyekTahun($tahun)) <= 0) {
                 $data['kosong'] = 'Tidak ada data';
             }
             $this->view('templates/header', $data);

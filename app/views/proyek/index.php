@@ -58,12 +58,16 @@
                         <form action="<?= BASEURL; ?>proyek/tambah" method="post">
                             <input type="hidden" name="id" id="id">
                             <div class="form-group">
-                                <label for="pt">Nama PT</label>
+                                <label for="pt">Nama instansi PT pemberi kerja</label>
                                 <input type="text" class="form-control" id="pt" name="pt">
                             </div>
                             <div class="form-group">
-                                <label for="nama_proyek">Nama Proyek</label>
+                                <label for="nama_proyek">Nama Paket Pekerjaan</label>
                                 <input type="text" class="form-control" id="nama_proyek" name="nama_proyek">
+                            </div>
+                            <div class="form-group">
+                                <label for="tahun_proyek">Tahun Anggaran</label>
+                                <input type="number" class="form-control" id="tahun_proyek" name="tahun_proyek">
                             </div>
                             <div class="form-group">
                                 <label for="Lokasi">Lokasi</label>
@@ -72,14 +76,6 @@
                             <div class="form-group">
                                 <label for="maps">Link Google Maps</label>
                                 <input type="text" class="form-control" id="maps" name="maps">
-                            </div>
-                            <div class="form-group">
-                                <label for="panjang">Panjang</label>
-                                <input type="number" class="form-control" id="panjang" name="panjang">
-                            </div>
-                            <div class="form-group">
-                                <label for="lebar">Lebar</label>
-                                <input type="number" class="form-control" id="lebar" name="lebar">
                             </div>
                             <div class="form-group">
                                 <label for="link">Link File Google Drive</label>

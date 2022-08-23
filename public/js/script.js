@@ -33,13 +33,10 @@ $(function() {
                 $('#lokasi').val(data.lokasi);
                 $('#maps').val(data.maps);
                 $('#link').val(data.link);
-                $('#panjang').val(data.panjang);
-                $('#lebar').val(data.lebar);
                 $('#id').val(data.id);
             }
 
         });
     });
-
 
 });

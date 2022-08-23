@@ -22,16 +22,16 @@
                 <form action="<?= BASEURL; ?>proyek/ubah" method="post">
                     <input type="hidden" name="id" id="id">
                     <div class="form-group">
-                        <label for="pt">Nama PT</label>
+                        <label for="pt">Nama instansi PT pemberi kerja</label>
                         <input type="text" class="form-control" id="pt" name="pt">
                     </div>
                     <div class="form-group">
-                        <label for="nama_proyek">Nama Proyek</label>
+                        <label for="nama_proyek">Nama Paket Pekerjaan</label>
                         <input type="text" class="form-control" id="nama_proyek" name="nama_proyek">
                     </div>
                     <div class="form-group">
-                        <label for="nama_proyek">Tahun Proyek</label>
-                        <input type="text" class="form-control" id="tahun_proyek" name="tahun_proyek">
+                        <label for="tahun_proyek">Tahun Anggaran</label>
+                        <input type="number" class="form-control" id="tahun_proyek" name="tahun_proyek">
                     </div>
                     <div class="form-group">
                         <label for="Lokasi">Lokasi</label>
@@ -42,21 +42,30 @@
                         <input type="text" class="form-control" id="maps" name="maps">
                     </div>
                     <div class="form-group">
-                        <label for="panjang">Panjang</label>
-                        <input type="number" class="form-control" id="panjang" name="panjang">
-                    </div>
-                    <div class="form-group">
-                        <label for="lebar">Lebar</label>
-                        <input type="number" class="form-control" id="lebar" name="lebar">
-                    </div>
-                    <div class="form-group">
                         <label for="link">Link File Google Drive</label>
                         <input type="text" class="form-control" id="link" name="link">
                     </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-primary " data-target="#modalProyek">Ubah Data</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" id="modalHapus" tabindex="-1" aria-labelledby="judulModalHapus" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalLabelHapusProyek">Hapus Proyek</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h6 class="text-center">Apakah anda yakin ingin menghapus data ini?</h6>
+            </div>
+            <div class="modal-footer text-center">
+                <a href="<?= BASEURL; ?>proyek/hapus/<?= $data['proyek']['id']; ?>" style="text-decoration:none;" class="btn btn-danger"> Ya</a>
                 </form>
             </div>
         </div>
@@ -109,17 +118,6 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">Panjang:</th>
-                                        <td><?= $data['proyek']['panjang']; ?> m</p>
-                                        </td>
-
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Lebar:</th>
-                                        <td><?= $data['proyek']['lebar']; ?> m</p>
-                                        </td>
-                                    </tr>
-                                    <tr>
                                         <th scope="row">Link File:</th>
                                         <td><a style="text-decoration: underline;" href="<?= $data['proyek']['link']; ?>" target="_blank" rel="noopener noreferrer"><?= $data['proyek']['link']; ?></a></p>
                                         </td>
@@ -128,7 +126,8 @@
                             </table>
                         </div>
                         <div class="card-footer text-center">
-                            <a href="<?= BASEURL; ?>proyek/detail/<?= $data['proyek']['id']; ?>" style="text-decoration:none;" class="btn btn-success tampilModalUbah" data-bs-toggle="modal" data-bs-target="#modalProyek" data-id="<?= $data['proyek']['id'] ?>"> Ubah</a>
+                            <a href="<?= BASEURL; ?>proyek/detail/<?= $data['proyek']['id']; ?>" style="text-decoration:none;" class="btn btn-success tampilModalUbah" data-bs-toggle="modal" data-bs-target="#modalProyek" data-id="<?= $data['proyek']['id'] ?>"> Edit</a>
+                            <a href="<?= BASEURL; ?>proyek/detail/<?= $data['proyek']['id']; ?>" style="text-decoration:none;" class="btn btn-danger tampilModalHapus" data-bs-toggle="modal" data-bs-target="#modalHapus"> Hapus</a>
                         </div>
                     </div>
                 </td>

@@ -12,7 +12,7 @@ class Proyek_model
     }
     public function getAllProyek()
     {
-        $this->db->query('SELECT * FROM ' . $this->table);
+        $this->db->query('SELECT * FROM ' . $this->table . ' order by tanggal_update');
         return $this->db->resultSet();
         
     }
@@ -26,7 +26,7 @@ class Proyek_model
     {
         date_default_timezone_set('Asia/Jakarta');
         $date = date('Y-m-d H:i:s');
-        $query = "INSERT INTO proyek VALUES(NULL,:pt,:nama_proyek,:tahun_proyek,:lokasi,:maps,:link,:panjang,:lebar,:tanggal_input,:tanggal_update)";
+        $query = "INSERT INTO proyek VALUES(NULL,:pt,:nama_proyek,:tahun_proyek,:lokasi,:maps,:link,:tanggal_input,:tanggal_update)";
         $this->db->query($query);
         $this->db->bind('pt', $data['pt']);
         $this->db->bind('nama_proyek', $data['nama_proyek']);
@@ -34,8 +34,6 @@ class Proyek_model
         $this->db->bind('lokasi', $data['lokasi']);
         $this->db->bind('maps', $data['maps']);
         $this->db->bind('link', $data['link']);
-        $this->db->bind('panjang', $data['panjang']);
-        $this->db->bind('lebar', $data['lebar']);
         $this->db->bind('tanggal_input', $date);
         $this->db->bind('tanggal_update', $date);
 
@@ -63,8 +61,6 @@ class Proyek_model
         lokasi=:lokasi,
         maps=:maps,
         link=:link,
-        panjang=:panjang,
-        lebar=:lebar,
         tanggal_update=:tanggal_update 
         where id=:id";
         $this->db->query($query);
@@ -74,8 +70,6 @@ class Proyek_model
         $this->db->bind('lokasi', $data['lokasi']);
         $this->db->bind('maps', $data['maps']);
         $this->db->bind('link', $data['link']);
-        $this->db->bind('panjang', $data['panjang']);
-        $this->db->bind('lebar', $data['lebar']);
         $this->db->bind('tanggal_update', $date);
         $this->db->bind('id', $data['id']);
         $this->db->execute();
@@ -86,7 +80,7 @@ class Proyek_model
     public function cariDataProyek()
     {
         $keyword = $_POST['keyword'];
-        $this->db->query('SELECT * FROM ' . $this->table . ' WHERE nama_proyek LIKE :keyword');
+        $this->db->query('SELECT * FROM ' . $this->table . ' WHERE nama_proyek LIKE :keyword order by tanggal_update desc');
         $this->db->bind('keyword', "%$keyword%");
         return $this->db->resultSet();
     }

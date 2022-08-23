@@ -96,15 +96,16 @@ a:focus {
 }
 
 #sidebar ul li a:hover {
-    /*color: #7386D5;
-    background: #fff;*/
+    color: #000;
+    background: #fff;
 }
 
-#sidebar ul li.active>a,
+
+/* #sidebar ul li.active>a,
 a[aria-expanded="true"] {
-    /* color: #fff;
-    background: #6d7fcc;*/
-}
+    color: #fff;
+    background: grey;
+} */
 
 a[data-toggle="collapse"] {
     position: relative;

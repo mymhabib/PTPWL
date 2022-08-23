@@ -31,34 +31,20 @@
 			</div>
 			<ul class="list-unstyled">
 				<li>
-					<a href="#proyekSubmenu" data-toggle="collapse" aria-expanded="false" aria-controls="proyekSubmenu" id="colapsButton" class="dropdown-toggle">Daftar Proyek</a>
-					<ul class="collapse list-unstyled" id="proyekSubmenu">
-						<li>
-							<a href="<?= BASEURL; ?>proyek">Semua Proyek</a>
-						</li>
-						<?php for ($tahun = 2015; $tahun <= 2030; $tahun++) { ?>
+					<a href="#proyekSubmenu" data-toggle="collapse" aria-expanded="false" aria-controls="proyekSubmenu" id="colapsButton" class="dropdown">Daftar Proyek
+					</a>
+					<div class="bg-secondary">
+						<ul class="collapse list-unstyled text-white" id="proyekSubmenu">
 							<li>
-								<a href="<?= BASEURL; ?>proyek/Tahun/<?= $tahun ?>"><?php echo $tahun; ?></a>
+								<a href="<?= BASEURL; ?>proyek">Semua Proyek</a>
 							</li>
-						<?php } ?>
-					</ul>
-				</li>
-				<li class="active">
-					<a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Menu 1</a>
-					<ul class="collapse list-unstyled" id="homeSubmenu">
-						<li>
-							<a href="#">Menu 1</a>
-						</li>
-						<li>
-							<a href="#">Menu 2</a>
-						</li>
-						<li>
-							<a href="#">Menu 3</a>
-						</li>
-						<li>
-							<a href="#">Menu 4</a>
-						</li>
-					</ul>
+							<?php for ($tahun = 2015; $tahun <= 2030; $tahun++) { ?>
+								<li>
+									<a href="<?= BASEURL; ?>proyek/Tahun/<?= $tahun ?>"><?php echo $tahun; ?></a>
+								</li>
+							<?php } ?>
+						</ul>
+					</div>
 				</li>
 			</ul>
 		</nav>
