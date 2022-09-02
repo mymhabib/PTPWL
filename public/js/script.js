@@ -11,8 +11,6 @@ $(function() {
         $('#lokasi').val("");
         $('#maps').val("");
         $('#link').val("");
-        $('#panjang').val("");
-        $('#lebar').val("");
         $('#id').val("");
     });
 
