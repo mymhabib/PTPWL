@@ -6,6 +6,8 @@ $(function() {
         $('#pt').val("");
         $('#nama_proyek').val("");
         $('#tahun_proyek').val("");
+        $('#bulan_proyek').val("");
+        $('#tanggal_proyek').val("");
         $('#lokasi').val("");
         $('#maps').val("");
         $('#link').val("");
@@ -30,6 +32,8 @@ $(function() {
                 $('#pt').val(data.pt);
                 $('#nama_proyek').val(data.nama_proyek);
                 $('#tahun_proyek').val(data.tahun_proyek);
+                $('#bulan_proyek').val(data.bulan_proyek);
+                $('#tanggal_proyek').val(data.tanggal_proyek);
                 $('#lokasi').val(data.lokasi);
                 $('#maps').val(data.maps);
                 $('#link').val(data.link);

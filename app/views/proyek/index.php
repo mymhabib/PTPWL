@@ -23,15 +23,16 @@
             <?php Flasher::flash(); ?>
         </div>
     </div>
-
-    <div class="row mb-3">
-        <div class="col-lg-6">
-            <!-- button trigger modal -->
-            <button type="button" class="btn btn-primary tombolTambahData" data-bs-toggle="modal" data-bs-target="#modalProyek">
-                Tambah Data
-            </button>
+    <?php if ($_SESSION['ptpwl_user_id'] == 1) { ?>
+        <div class="row mb-3">
+            <div class="col-lg-6">
+                <!-- button trigger modal -->
+                <button type="button" class="btn btn-primary tombolTambahData" data-bs-toggle="modal" data-bs-target="#modalProyek">
+                    Tambah Data
+                </button>
+            </div>
         </div>
-    </div>
+    <?php } ?>
 
     <div class="row mb-3">
         <div class="col-lg-6">
@@ -58,27 +59,56 @@
                         <form action="<?= BASEURL; ?>proyek/tambah" method="post">
                             <input type="hidden" name="id" id="id">
                             <div class="form-group">
-                                <label for="pt">Nama instansi PT pemberi kerja</label>
+                                <label for="pt">
+                                    <h6>Nama instansi pemberi kerja:</h6>
+                                </label>
                                 <input type="text" class="form-control" id="pt" name="pt">
-                            </div>
-                            <div class="form-group">
-                                <label for="nama_proyek">Nama Paket Pekerjaan</label>
+                                <label for="nama_proyek" style="margin-top:10px;">
+                                    <h6>Nama Paket Pekerjaan:</h6>
+                                </label>
                                 <input type="text" class="form-control" id="nama_proyek" name="nama_proyek">
-                            </div>
-                            <div class="form-group">
-                                <label for="tahun_proyek">Tahun Anggaran</label>
-                                <input type="number" class="form-control" id="tahun_proyek" name="tahun_proyek">
-                            </div>
-                            <div class="form-group">
-                                <label for="Lokasi">Lokasi</label>
+                                <table style="margin-top:10px;">
+                                    <tr>
+                                        <td style="padding-right:10px;">
+                                            <label for="tahun_proyek">
+                                                <h6>Tahun Anggaran:</h6>
+                                            </label>
+                                            <input type="number" class="form-control" id="tahun_proyek" name="tahun_proyek">
+                                        </td>
+                                        <td style="padding-right:10px;">
+                                            <label for="tanggal_proyek">
+                                                <h6>Tanggal:</h6>
+                                            </label>
+                                            <select class="form-control" id="tanggal_proyek" name="tanggal_proyek">
+                                                <?php for ($j = 1; $j <= 31; $j++) { ?>
+                                                    <option value="<?= $j ?>"><?= $j ?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </td>
+                                        <td style="padding-right:10px;">
+                                            <label for="bulan_proyek">
+                                                <h6>Bulan:</h6>
+                                            </label>
+                                            <select class="form-control" id="bulan_proyek" name="bulan_proyek">
+                                                <?php $daftarBulan = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+                                                for ($i = 0; $i < 12; $i++) { ?>
+                                                    <option value="<?= $daftarBulan[$i] ?>"><?= $daftarBulan[$i] ?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <label for="Lokasi" style="margin-top:10px;">
+                                    <h6>Lokasi:</h6>
+                                </label>
                                 <input type="text" class="form-control" id="lokasi" name="lokasi">
-                            </div>
-                            <div class="form-group">
-                                <label for="maps">Link Google Maps</label>
+                                <label for="maps" style="margin-top:10px;">
+                                    <h6>Link Google Maps:</h6>
+                                </label>
                                 <input type="text" class="form-control" id="maps" name="maps">
-                            </div>
-                            <div class="form-group">
-                                <label for="link">Link File Google Drive</label>
+                                <label for="link" style="margin-top:10px;">
+                                    <h6>Link File Google Drive:</h6>
+                                </label>
                                 <input type="text" class="form-control" id="link" name="link">
                             </div>
                     </div>

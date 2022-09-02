@@ -22,27 +22,56 @@
                 <form action="<?= BASEURL; ?>proyek/ubah" method="post">
                     <input type="hidden" name="id" id="id">
                     <div class="form-group">
-                        <label for="pt">Nama instansi PT pemberi kerja</label>
+                        <label for="pt">
+                            <h6>Nama instansi pemberi kerja:</h6>
+                        </label>
                         <input type="text" class="form-control" id="pt" name="pt">
-                    </div>
-                    <div class="form-group">
-                        <label for="nama_proyek">Nama Paket Pekerjaan</label>
+                        <label for="nama_proyek" style="margin-top:10px;">
+                            <h6>Nama Paket Pekerjaan:</h6>
+                        </label>
                         <input type="text" class="form-control" id="nama_proyek" name="nama_proyek">
-                    </div>
-                    <div class="form-group">
-                        <label for="tahun_proyek">Tahun Anggaran</label>
-                        <input type="number" class="form-control" id="tahun_proyek" name="tahun_proyek">
-                    </div>
-                    <div class="form-group">
-                        <label for="Lokasi">Lokasi</label>
+                        <table style="margin-top:10px;">
+                            <tr>
+                                <td style="padding-right:10px;">
+                                    <label for="tahun_proyek">
+                                        <h6>Tahun Anggaran:</h6>
+                                    </label>
+                                    <input type="number" class="form-control" id="tahun_proyek" name="tahun_proyek">
+                                </td>
+                                <td style="padding-right:10px;">
+                                    <label for="tanggal_proyek">
+                                        <h6>Tanggal:</h6>
+                                    </label>
+                                    <select class="form-control" id="tanggal_proyek" name="tanggal_proyek">
+                                        <?php for ($j = 1; $j <= 31; $j++) { ?>
+                                            <option value="<?= $j ?>"><?= $j ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </td>
+                                <td style="padding-right:10px;">
+                                    <label for="bulan_proyek">
+                                        <h6>Bulan:</h6>
+                                    </label>
+                                    <select class="form-control" id="bulan_proyek" name="bulan_proyek">
+                                        <?php $daftarBulan = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+                                        for ($i = 0; $i < 12; $i++) { ?>
+                                            <option value="<?= $daftarBulan[$i] ?>"><?= $daftarBulan[$i] ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+                        <label for="Lokasi" style="margin-top:10px;">
+                            <h6>Lokasi:</h6>
+                        </label>
                         <input type="text" class="form-control" id="lokasi" name="lokasi">
-                    </div>
-                    <div class="form-group">
-                        <label for="maps">Link Google Maps</label>
+                        <label for="maps" style="margin-top:10px;">
+                            <h6>Link Google Maps:</h6>
+                        </label>
                         <input type="text" class="form-control" id="maps" name="maps">
-                    </div>
-                    <div class="form-group">
-                        <label for="link">Link File Google Drive</label>
+                        <label for="link" style="margin-top:10px;">
+                            <h6>Link File Google Drive:</h6>
+                        </label>
                         <input type="text" class="form-control" id="link" name="link">
                     </div>
             </div>
@@ -85,7 +114,7 @@
                 <td style="text-align: left; width: 55%;"></td>
             </tr>
             <tr>
-                <td style="text-align: right;"><a href="<?= BASEURL; ?>proyek" class="btn btn-primary mt-1">←</a></td>
+                <td style="text-align: right;"><button onclick="history.back()" class="btn btn-primary mt-1">←</a></td>
                 <td style="text-align: left;">
                     <div class="card" style="width: 30rem;">
                         <div class="card-body">
@@ -96,13 +125,17 @@
                                     </td>
                                     <td rowspan="2" style="width:39%;">
                                         <h2 style="text-align:center"><?= $data['proyek']['tahun_proyek']; ?></h2>
+                                        <h6 style="text-align:center"><?= $data['proyek']['tanggal_proyek']; ?> <?= $data['proyek']['bulan_proyek']; ?></h6>
                                     </td>
                                 </tr>
-                                <td style="border-right: 1px solid #dfe2e6">
-                                    <h6 class="card-subtitle mb-4 mt-3 text-muted"><?= $data['proyek']['pt']; ?></h6>
-                                </td>
-                                <td>
-                                </td>
+                                <tr>
+                                    <td style="border-right: 1px solid #dfe2e6">
+                                        <h6 class="card-subtitle mb-4 mt-3 text-muted"><?= $data['proyek']['pt']; ?></h6>
+                                    </td>
+                                    <td>
+                                    </td>
+                                </tr>
+
                             </table>
 
                             <table class="table">
@@ -117,7 +150,7 @@
                                         <td><a style="text-decoration: underline;" href="<?= $data['proyek']['maps']; ?>" target="_blank" rel="noopener noreferrer"><?= $data['proyek']['maps']; ?></a></p>
                                         </td>
                                     </tr>
-                                    <tr>
+                                    <tr style="border-bottom: 1px solid #ffffff">
                                         <th scope="row">Link File:</th>
                                         <td><a style="text-decoration: underline;" href="<?= $data['proyek']['link']; ?>" target="_blank" rel="noopener noreferrer"><?= $data['proyek']['link']; ?></a></p>
                                         </td>
@@ -125,10 +158,12 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="card-footer text-center">
-                            <a href="<?= BASEURL; ?>proyek/detail/<?= $data['proyek']['id']; ?>" style="text-decoration:none;" class="btn btn-success tampilModalUbah" data-bs-toggle="modal" data-bs-target="#modalProyek" data-id="<?= $data['proyek']['id'] ?>"> Edit</a>
-                            <a href="<?= BASEURL; ?>proyek/detail/<?= $data['proyek']['id']; ?>" style="text-decoration:none;" class="btn btn-danger tampilModalHapus" data-bs-toggle="modal" data-bs-target="#modalHapus"> Hapus</a>
-                        </div>
+                        <?php if ($_SESSION['ptpwl_user_id'] == 1) { ?>
+                            <div class="card-footer text-center">
+                                <a href="<?= BASEURL; ?>proyek/detail/<?= $data['proyek']['id']; ?>" style="text-decoration:none;" class="btn btn-success tampilModalUbah" data-bs-toggle="modal" data-bs-target="#modalProyek" data-id="<?= $data['proyek']['id'] ?>"> Edit</a>
+                                <a href="<?= BASEURL; ?>proyek/detail/<?= $data['proyek']['id']; ?>" style="text-decoration:none;" class="btn btn-danger tampilModalHapus" data-bs-toggle="modal" data-bs-target="#modalHapus"> Hapus</a>
+                            </div>
+                        <?php } ?>
                     </div>
                 </td>
                 <td></td>

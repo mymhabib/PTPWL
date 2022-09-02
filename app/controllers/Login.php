@@ -75,6 +75,7 @@
         {
             $_SESSION['ptpwl_user_id'] = $user->id;
             $_SESSION['ptpwl_username'] = $user->username;
+            $_SESSION['ptpwl_admin'] = $user->admin;
             header('location:' . BASEURL . 'home');
         }
 
@@ -82,6 +83,7 @@
         {
             unset($_SESSION['ptpwl_user_id']);
             unset($_SESSION['ptpwl_username']);
+            unset($_SESSION['ptpwl_admin']);
             header('location:' . BASEURL . 'login');
         }
     }
